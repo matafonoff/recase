@@ -1,6 +1,6 @@
 {
     "name": "@xelbera/recase",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Tiny and powerful utility to convert between camelCase, snake_case, PascalCase, kebab-case, dot.case, COBOL-CASE and more — with abbreviation preservation.",
     "keywords": [
         "case",
@@ -17,6 +17,10 @@
         "string utils",
         "recase"
     ],
+    "repository": {
+        "type": "github",
+        "url": "https://github.com/matafonoff/recase"
+    },
     "packageManager": "yarn@1.22.22",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

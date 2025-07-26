@@ -1,5 +1,8 @@
 # @xelbera/recase
 
+[![npm version](https://img.shields.io/npm/v/@xelbera/recase?style=flat-square)](https://www.npmjs.com/package/@xelbera/recase)
+[![MIT License](https://img.shields.io/npm/l/@xelbera/recase?style=flat-square)](./LICENSE)
+
 > Convert strings between camelCase, PascalCase, snake_case, kebab-case, dot.case, COBOL-CASE and more — with optional abbreviation preservation.
 
 ---
@@ -11,6 +14,7 @@
   - `kebab-case`, `Train-Case`, `dot.case`, `COBOL-CASE`
 - Detect case style from input
 - Preserve known abbreviations like `API`, `HTML`, `URL`
+- Convert keys of deeply nested objects
 - Zero dependencies
 - TypeScript-native
 
@@ -21,10 +25,6 @@
 ```bash
 npm install @xelbera/recase
 ```
-or
-```bash
-yarn add @xelbera/recase
-```
 
 ---
 
@@ -34,11 +34,11 @@ yarn add @xelbera/recase
 import {
   convertCase,
   detectCase,
-  splitToParts
+  convertObjectKeys
 } from '@xelbera/recase';
 
 // Convert between styles
-convertCase('userProfileID', 'snake'); 
+convertCase('userProfileID', 'snake');
 // => 'user_profile_id'
 
 convertCase('userHTMLData', 'camel', { preserveAbbreviations: true });
@@ -51,13 +51,9 @@ convertCase('userHTMLData', 'camel');
 detectCase('USER-PROFILE-ID');
 // => 'cobol'
 
-// Split string into parts
-splitToParts('userProfileID');
-// => ['user', 'profile', 'id']
-
-splitToParts('userHTMLData', true);
-// => ['user', 'HTML', 'Data']
-
+// Convert object keys
+convertObjectKeys({ userHTMLData: 123 }, 'snake', { preserveAbbreviations: true });
+// => { user_HTML_data: 123 }
 ```
 
 ---
@@ -82,5 +78,3 @@ splitToParts('userHTMLData', true);
 See [LICENSE](./LICENSE) for full details.
 
 ---
-
-MIT © Stepan Matafonov
